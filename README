@@ -1,0 +1,23 @@
+Intro
+
+ Simple Profiling library for python
+ Implementation based from below url
+
+ http://people.gnome.org/~federico/news-2006-03.html#login-time-2 
+
+Requirement
+
+ strace
+ python
+ pycairo
+
+Usage
+
+ Add ptrace.trace as decorator on your method to sampling
+ and run like this and save a log file.
+
+ $ strace -f -ttt -e trace=access,execve -o trace.log env ENABLE_PTRACE=1 python blah.py
+
+ run drawplot script with the log file and save a graph file.
+ $ ./drawplot trace.log -o trace.png
+

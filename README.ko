@@ -1,0 +1,23 @@
+Intro
+
+ 간단하게 성능 측정을 위한 라이브러리 입니다.
+ 컨셉은 아래의 url을 참고하면 됩니다.
+
+ http://people.gnome.org/~federico/news-2006-03.html#login-time-2 
+
+Requirement
+
+ strace
+ python
+ pycairo
+
+Usage
+
+ 원하는 메소드에 ptrace.trace 를 데코레이터로 달아둡니다.
+ 그리고 다음과 같이 실행해서 로그파일을 남깁니다.
+
+ $ strace -f -ttt -e trace=access,execve -o trace.log env ENABLE_PTRACE=1 python blah.py
+
+ 생성된 trace.log 파일로 그래프를 그립니다.
+ $ ./drawplot trace.log -o trace.png
+
